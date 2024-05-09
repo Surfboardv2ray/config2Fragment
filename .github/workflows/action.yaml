@@ -1,29 +1,32 @@
-name: Run Python script with dynamic URIs
+name: Run Python Script
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        uri:
-          - 'vless://43e00e4c-2316-4dc9-8262-cef31886dc56@crackthecode.ftp.sh:443?encryption=none&security=tls&sni=vcp3.cushingreflex5.wOrKerS.DEv&alpn=h2&fp=android&type=ws&host=vcp3.cushingreflex5.wOrKerS.DEv&path=%2Fmarly.toptechnonews.com%3A443%2Fnimws#05%2B%F0%9F%8C%A8%F0%9F%87%AC%F0%9F%87%A7%2B%40Surfboardv2ray'
-      
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
 
-    - name: Run script
-      run: python run.py ${{ matrix.uri }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # If there are any dependencies in your project, add them here.
+
+    - name: Run Script
+      run: python run.py
+      env:
+        URI_SECRET: ${{ secrets.URI_SECRET }}
 
     - name: Commit and Push
       run: |
