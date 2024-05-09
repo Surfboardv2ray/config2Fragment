@@ -105,3 +105,20 @@ jobs:
           git add .
           git commit -m "Add fragment JSON file"
           git push
+
+    - name: Combine fragment files
+      run: python fexport.py
+ 
+    - name: Upload Combined fragment file
+      uses: actions/upload-artifact@v2
+      with:
+        name: Combined fragment file
+        path: results/combined.json
+    - name: Export Fragmentation
+      run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Export TLS Fragment"
+          git pull
+          git push
