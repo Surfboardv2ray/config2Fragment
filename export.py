@@ -1,5 +1,6 @@
 import os
 import json
+from v2tj import convert_uri_json
 
 # Read URIs from file
 with open('uris.txt', 'r') as f:
