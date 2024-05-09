@@ -1,10 +1,7 @@
-# Acknowledgments
-
-This project is a fork of [v2ray-to-json](https://www.github.com/Am-Delta/v2ray-to-json) by Am-Delta.
-The basic function is converting v2ray proxies to json, but this modified code converts in batch instead.
-
 # Usage
-Fork this repository or download it. Place your v2ray configs inside `list.txt`, one config per line. Run the github actions workflow `action.yaml`
+1. Fork this repository or download it. Place your v2ray configs inside `list.txt`, one config per line. Run the github actions workflow `action.yaml`.
+2. Change your desired TLS Fragmentaion values at `java/fragment.js` under "fragment" tag, or just let them be.
+3. Your json sub will be at `configs/combined.json` and fragment+json sub at `results/combined.json`.
 
 # Supported Porotocls
 
@@ -41,3 +38,9 @@ Fork this repository or download it. Place your v2ray configs inside `list.txt`,
 - TROJAN+WS+TLS
 - TROJAN+WS+HTTP
 - TROJAN+WS+HTTP+TLS
+
+# Acknowledgments
+
+This project is a fork of [v2ray-to-json](https://www.github.com/Am-Delta/v2ray-to-json) by Am-Delta.
+The basic function is converting a v2ray proxy to json format, but this modified code converts in batches as well.
+This project also uses MiSaturo's [Xray-Fragment-Configurator](https://github.com/MiSaturo/Xray-Fragment-Configurator) to apply fragmentation.
