@@ -6,12 +6,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Generate matrix
+      id: set-matrix
+      run: echo "::set-output name=matrix::{\"uri\": $(cat uris.txt | jq -R -c 'split("\n")')}"
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        uri: ${{ fromJson(steps.get_uris.outputs.uris) }}
+        uri: ${{ fromJson(needs.setup.outputs.matrix).uri }}
 
     steps:
     - name: Checkout code
@@ -21,13 +34,6 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-
-    - name: Get URIs
-      id: get_uris
-      run: echo "::set-output name=uris::$(bash read_uris.sh)"
-
-    - name: Print URIs
-      run: cat uris.json
 
     - name: Run script
       run: python run.py ${{ matrix.uri }}
