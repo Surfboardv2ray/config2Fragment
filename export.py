@@ -2,10 +2,6 @@ import os
 import json
 from v2tj import convert_uri_json
 
-# Read URIs from file
-with open('uris.txt', 'r') as f:
-    uris = f.read().split(',')
-
 # Directory containing the JSON files
 directory = 'configs'
 
