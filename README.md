@@ -44,8 +44,5 @@
 
 This project is a fork of [v2ray-to-json](https://www.github.com/Am-Delta/v2ray-to-json) by Am-Delta.
 The basic function is converting a v2ray proxy to json format, but this modified code converts in batches as well.
+
 This project also uses MiSaturo's [Xray-Fragment-Configurator](https://github.com/MiSaturo/Xray-Fragment-Configurator) to apply fragmentation.
-
-
-// ## Stargazers over time
-// [![Stargazers over time](https://starchart.cc/Surfboardv2ray/config2Fragment.svg?variant=adaptive)](https://starchart.cc/Surfboardv2ray/config2Fragment)
