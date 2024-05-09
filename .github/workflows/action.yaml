@@ -3,6 +3,7 @@ name: Run Python script with dynamic URIs
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
