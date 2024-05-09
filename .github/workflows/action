@@ -1,9 +1,8 @@
-name: Run Python script with dynamic URI
+name: Run Python script with dynamic URIs
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
   build:
@@ -18,14 +17,22 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Get URIs
+      id: get_uris
+      run: echo "::set-output name=uris::$(bash read_uris.sh)"
+
+
+    strategy:
+      matrix:
+        uri: ${{ fromJson(steps.get_uris.outputs.uris) }}
+
     - name: Run script
-      run: python run.py
-   
+      run: python run.py ${{ matrix.uri }}
+
     - name: Commit and Push
       run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "update"
+          git commit -m "Add generated JSON file"
           git push
-  
