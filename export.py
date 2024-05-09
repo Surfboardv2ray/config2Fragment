@@ -1,28 +1,27 @@
 import os
 import json
 
+# Read URIs from file
+with open('uris.txt', 'r') as f:
+    uris = f.read().split(',')
+
 # Directory containing the JSON files
 directory = 'configs'
 
 # List to store the contents of all JSON files
 combined = []
 
-# Loop through all files in the directory
-for filename in os.listdir(directory):
-    if filename.endswith('.json'):
-        # Full file path
-        filepath = os.path.join(directory, filename)
-
-        # Open and read the JSON file
-        with open(filepath, 'r') as f:
-            data = json.load(f)
-
-        # Add the content to the combined list
-        combined.append(data)
+# Loop through all URIs
+for uri in uris:
+    file = convert_uri_json(uri=uri.strip())
 
 # Write the combined content to a new JSON file
 with open('configs/combined.json', 'w') as f:
     f.write('[\n')
-    for item in combined:
-        f.write('    ' + json.dumps(item, indent=4).replace('\n', '\n    ') + ',\n')
+    for i, item in enumerate(combined):
+        # If this is the last item, don't add a comma after it
+        if i == len(combined) - 1:
+            f.write('    ' + json.dumps(item, indent=4).replace('\n', '\n    ') + '\n')
+        else:
+            f.write('    ' + json.dumps(item, indent=4).replace('\n', '\n    ') + ',\n')
     f.write(']\n')
