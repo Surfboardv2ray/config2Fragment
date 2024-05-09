@@ -122,3 +122,17 @@ jobs:
           git commit -m "Export TLS Fragment"
           git pull
           git push
+    - name: Convert base64
+      run: |
+          > list64
+          content=$(cat list.txt | base64 | tr -d '\n')
+            echo "$content" > list64
+
+    - name: Push Base64
+      run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Convert to base64"
+          git pull
+          git push
