@@ -1,2 +1,2 @@
 #!/bin/bash
-jq -R -s -c 'split("\n")' uris.txt
+jq -R -s -c 'split("\n")' uris.txt > uris.json
