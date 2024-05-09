@@ -8,8 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+   
+    strategy:
+      matrix:
+        uri: ${{ fromJson(steps.get_uris.outputs.uris) }}
 
     steps:
     - name: Checkout code
