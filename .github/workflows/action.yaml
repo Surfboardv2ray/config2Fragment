@@ -9,10 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        uri: ${{ fromJson('uris.json') }}
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -22,8 +18,9 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Generate URIs
-      run: bash read_uris.sh
+    - name: Get URIs
+      id: get_uris
+      run: echo "::set-output name=uris::$(bash read_uris.sh)"
 
     - name: Run script
       run: python run.py ${{ matrix.uri }}
