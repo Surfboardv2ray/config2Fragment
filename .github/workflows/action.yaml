@@ -6,25 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Generate matrix
-      id: set-matrix
-      run: echo "::set-output name=matrix::{\"uri\": $(cat uris.txt | jq -R -c 'split("\n")')}"
-
   build:
-    needs: setup
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        uri: ${{ fromJson(needs.setup.outputs.matrix).uri }}
 
     steps:
     - name: Checkout code
@@ -35,13 +18,17 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Get URIs
+      id: get_uris
+      run: echo "::set-output name=uris::$(bash read_uris.sh)"
+
     - name: Run script
       run: python run.py ${{ matrix.uri }}
 
     - name: Commit and Push
       run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.name "GitHub
           git add .
           git commit -m "Add generated JSON file"
           git push
