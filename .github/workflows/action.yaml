@@ -30,9 +30,7 @@ jobs:
 
     - name: Run Script
       run: python run.py
-      env:
-        URIS: "vless://149400e4-6910-4a3f-8c4a-c5c175929b87@crackthecode.ftp.sh:443?encryption=none&security=tls&sni=vcp3.dehel15354.wOrkeRS.dEv&alpn=h3%2Ch2%2Chttp%2F1.1&fp=ios&type=ws&host=vcp3.dehel15354.wOrkeRS.dEv&path=%2Fromb.minusober.com%3A443%2Fromb#13%2B%F0%9F%8C%A8%F0%9F%87%A8%F0%9F%87%A6%2B%40Surfboardv2ray,vless://07aa1cf9-9859-4690-ae4e-1d983fd9ad51@176.65.242.93:1325?encryption=none&security=none&type=grpc&authority=&serviceName=Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-Telegramjoin%3A%40V2Ray_Rolly-&mode=gun#%F0%9F%87%AE%F0%9F%87%B7IR_71_%40Surfboardv2ray"
-
+      
     - name: Upload JSON files
       uses: actions/upload-artifact@v2
       with:
