@@ -1,7 +1,8 @@
 # Usage
 1. Fork this repository or download it. Place your v2ray configs inside `list.txt`, one config per line. Run the github actions workflow `action.yaml`.
-2. Change your desired TLS Fragmentaion values at `java/fragment.js` under "fragment" tag, or just let them be.
+2. You can set desired TLS Fragmentaion values over at `java/fragment.js` under "fragment" tag, or just let them be.
 3. Your json sub will be at `configs/combined.json` and fragment+json sub at `results/combined.json`.
+4. Finally, your exported base64 subscription will be saved to `list64`.
 
 # Supported Porotocls
 
