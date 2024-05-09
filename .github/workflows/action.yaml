@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        uri: ${{ fromJson(steps.get_uris.outputs.uris) }}
+        uri: ${{ fromJson('uris.json') }}
 
     steps:
     - name: Checkout code
@@ -22,9 +22,8 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Get URIs
-      id: get_uris
-      run: echo "::set-output name=uris::$(bash read_uris.sh)"
+    - name: Generate URIs
+      run: bash read_uris.sh
 
     - name: Run script
       run: python run.py ${{ matrix.uri }}
