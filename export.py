@@ -1,6 +1,5 @@
 import os
 import json
-from v2tj import convert_uri_json
 
 # Directory containing the JSON files
 directory = 'configs'
@@ -8,9 +7,18 @@ directory = 'configs'
 # List to store the contents of all JSON files
 combined = []
 
-# Loop through all URIs
-for uri in uris:
-    file = convert_uri_json(uri=uri.strip())
+# Loop through all files in the directory
+for filename in os.listdir(directory):
+    if filename.endswith('.json'):
+        # Full file path
+        filepath = os.path.join(directory, filename)
+
+        # Open and read the JSON file
+        with open(filepath, 'r') as f:
+            data = json.load(f)
+
+        # Add the content to the combined list
+        combined.append(data)
 
 # Write the combined content to a new JSON file
 with open('configs/combined.json', 'w') as f:
