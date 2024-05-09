@@ -2,7 +2,7 @@ import os
 import json
 
 # Directory containing the JSON files
-directory = 'configs'
+directory = '/configs'
 
 # List to store the contents of all JSON files
 combined = []
