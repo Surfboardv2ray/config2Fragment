@@ -1,0 +1,131 @@
+{
+    "log": {
+        "access": "",
+        "error": "",
+        "loglevel": "warning"
+    },
+    "outbounds": [
+        {
+            "tag": "proxy",
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "crackthecode.ftp.sh",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "05641cf5-58d2-4ba4-a9f1-b3cda0b1fb1d",
+                                "alterId": 0,
+                                "email": "t@t.tt",
+                                "security": "auto"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "wsSettings": {
+                    "path": "/obdii.cfd:443/linkws",
+                    "headers": {
+                        "Host": "vcp.cushingreflex2.wORkers.dEV"
+                    }
+                },
+                "security": "tls",
+                "tlsSettings": {
+                    "allowInsecure": true,
+                    "serverName": "vcp.cushingreflex2.wORkers.dEV",
+                    "alpn": [
+                        "http/1.1",
+                        "h2",
+                        "h3"
+                    ],
+                    "show": false,
+                    "fingerprint": "randomized"
+                },
+                "sockopt": {
+                    "dialerProxy": "fragment",
+                    "tcpKeepAliveIdle": 100,
+                    "tcpNoDelay": true
+                }
+            },
+            "mux": {
+                "enabled": false,
+                "concurrency": -1
+            }
+        },
+        {
+            "tag": "fragment",
+            "protocol": "freedom",
+            "settings": {
+                "domainStrategy": "AsIs",
+                "fragment": {
+                    "packets": "1-5",
+                    "length": "1-5",
+                    "interval": "1-5"
+                }
+            },
+            "streamSettings": {
+                "sockopt": {
+                    "tcpKeepAliveIdle": 100,
+                    "tcpNoDelay": true
+                }
+            }
+        },
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "settings": {}
+        },
+        {
+            "tag": "block",
+            "protocol": "blackhole",
+            "settings": {
+                "response": {
+                    "type": "http"
+                }
+            }
+        }
+    ],
+    "inbounds": [
+        {
+            "tag": "socks",
+            "port": 10808,
+            "listen": "127.0.0.1",
+            "protocol": "socks",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ],
+                "routeOnly": false
+            },
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "allowTransparent": false
+            }
+        },
+        {
+            "tag": "http",
+            "port": 10809,
+            "listen": "127.0.0.1",
+            "protocol": "http",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ],
+                "routeOnly": false
+            },
+            "settings": {
+                "auth": "noauth",
+                "udp": true,
+                "allowTransparent": false
+            }
+        }
+    ]
+}
