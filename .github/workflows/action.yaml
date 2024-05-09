@@ -3,7 +3,7 @@ name: Run Python Script
 on:
   push:
     branches: [ main ]
-    
+  workflow_dispatch:
   pull_request:
     branches: [ main ]
 
@@ -41,7 +41,7 @@ jobs:
         path: uris.txt
  
 
-    - name: Commit and Push
+    - name: Commit and Push URIs
       run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -59,7 +59,7 @@ jobs:
         path: /configs/*.json
  
 
-    - name: Commit and Push
+    - name: Commit and Push JSONs
       run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -83,4 +83,25 @@ jobs:
           git add .
           git commit -m "Export JSON"
           git pull
+          git push
+
+    - name: Create results directory
+      run: | 
+        rm -rf results
+        mkdir results
+    - name: Run script
+      run: node java/fragment.js
+
+    - name: Upload fragment files
+      uses: actions/upload-artifact@v2
+      with:
+        name: JSON files
+        path: /results/*.json
+
+    - name: Commit and Push Fragment
+      run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Add fragment JSON file"
           git push
