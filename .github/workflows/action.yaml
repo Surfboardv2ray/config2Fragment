@@ -61,4 +61,5 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "Export JSON"
+          git pull
           git push
