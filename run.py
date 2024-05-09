@@ -5,7 +5,7 @@ def convert_uri_to_json(uri):
     # Your V2Ray to JSON conversion logic goes here (using v2tj)
 
 # Get all arguments after script name (list of URIs)
-uris = sys.argv[1:]
+    uris = sys.argv[1:]
 
 for uri in uris:
     converted_json = convert_uri_to_json(uri=uri)
