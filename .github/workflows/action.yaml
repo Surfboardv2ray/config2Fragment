@@ -29,6 +29,26 @@ jobs:
         python -m pip install --upgrade pip
         # If there are any dependencies in your project, add them here.
 
+    - name: Make lists
+      run: |
+        > uris.txt
+        python list.py
+        
+    - name: Upload URIs
+      uses: actions/upload-artifact@v2
+      with:
+        name: uris.txt
+        path: uris.txt
+ 
+
+    - name: Commit and Push
+      run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "update URIs"
+          git push
+          
     - name: Run Script
       run: python run.py
       
