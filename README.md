@@ -1,4 +1,4 @@
-# Aknowledgments
+# Acknowledgments
 
 This project is a fork of [v2ray-to-json](https://www.github.com/Am-Delta/v2ray-to-json) by Am-Delta.
 The basic function is convert v2ray proxies to json, but now this code converts in batch instead of a single one.
