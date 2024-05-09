@@ -21,8 +21,8 @@ for filename in os.listdir(directory):
         combined.append(data)
 
 # Write the combined content to a new JSON file
-with open('combined.json', 'w') as f:
+with open('configs/combined.json', 'w') as f:
     f.write('[\n')
     for item in combined:
-        f.write('    ' + json.dumps(item, indent=4) + ',\n')
+        f.write('    ' + json.dumps(item, indent=4).replace('\n', '\n    ') + ',\n')
     f.write(']\n')
