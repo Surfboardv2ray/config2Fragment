@@ -42,3 +42,20 @@ jobs:
           git add .
           git commit -m "Add generated JSON file"
           git push
+
+    - name: Combine JSON files
+      run: python export.py
+ 
+    - name: Upload Combined JSON file
+      uses: actions/upload-artifact@v2
+      with:
+        name: Combined JSON file
+        path: /configs/combined.json
+
+    - name: Export JSON
+      run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Export JSON"
+          git push
