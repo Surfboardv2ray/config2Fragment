@@ -1,2 +1,3 @@
 #!/bin/bash
-cat uris.txt | tr '\n' ' '
+
+cat uris.txt
