@@ -47,5 +47,5 @@ The basic function is converting a v2ray proxy to json format, but this modified
 This project also uses MiSaturo's [Xray-Fragment-Configurator](https://github.com/MiSaturo/Xray-Fragment-Configurator) to apply fragmentation.
 
 
-## Stargazers over time
-[![Stargazers over time](https://starchart.cc/Surfboardv2ray/config2Fragment.svg?variant=adaptive)](https://starchart.cc/Surfboardv2ray/config2Fragment)
+// ## Stargazers over time
+// [![Stargazers over time](https://starchart.cc/Surfboardv2ray/config2Fragment.svg?variant=adaptive)](https://starchart.cc/Surfboardv2ray/config2Fragment)
