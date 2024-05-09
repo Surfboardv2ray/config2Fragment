@@ -13,8 +13,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Create configs directory
-      run: mkdir -p configs
+    - name: Reset configs directory
+      run: |
+        rm -rf configs
+        mkdir configs
       
     - name: Set up Python
       uses: actions/setup-python@v2
