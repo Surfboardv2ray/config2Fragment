@@ -20,17 +20,12 @@ jobs:
 
     - name: Run script
       run: python run.py
-
-    - name: Check for Base64 Changes
-      id: changes64
-      run: |
-            git diff --quiet && echo 'No changes' || echo '::set-output name=changed::true'   
-    - name: Commit and Push Base64
-      if: steps.changes64.outputs.changed == 'true'   
+   
+    - name: Commit and Push
       run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add Raw
-          git commit -m "Update"
+          git add .
+          git commit -A
           git push
   
