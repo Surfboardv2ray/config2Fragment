@@ -1,7 +1,7 @@
 # Acknowledgments
 
 This project is a fork of [v2ray-to-json](https://www.github.com/Am-Delta/v2ray-to-json) by Am-Delta.
-The basic function is convert v2ray proxies to json, but now this code converts in batch instead of a single one.
+The basic function is converting v2ray proxies to json, but this modified code converts in batch instead.
 
 # Usage
 Fork this repository or download it. Place your v2ray configs inside `list.txt`, one config per line. Run the github actions workflow `action.yaml`
