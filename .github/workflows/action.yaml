@@ -41,12 +41,18 @@ jobs:
         path: uris.txt
  
 
+    - name: Check for URI Changes
+      id: changesRI
+      run: |
+            git diff --quiet && echo 'No changes' || echo '::set-output name=changed::true'   
+    
     - name: Commit and Push URIs
+      if: steps.changesRI.outputs.changed == 'true'
       run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "update URIs"
+          git commit --allow-empty -m "update URIs"
           git push
           
     - name: Run Script
