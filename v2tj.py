@@ -63,11 +63,13 @@ def json_file_maker(data):
 
 
 def splitter(uri, target):
+    spx = ""  # Assign an empty string as the default value
     if "&" in uri.split(target)[1]:
         spx = uri.split(target)[1].split("&")[0]
     elif "#" in uri.split(target)[1]:
         spx = uri.split(target)[1].split("#")[0]
     return spx
+
 
 
 def convert_uri_reality_json(host, port, socksport, uri):
