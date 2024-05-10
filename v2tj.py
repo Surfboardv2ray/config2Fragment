@@ -74,6 +74,12 @@ def splitter(uri, target):
 
 def convert_uri_reality_json(host, port, socksport, uri):
 
+    # Extract remarks from the URI (if present)
+    remarks = None
+    parts = uri.split("#")
+    if len(parts) > 1:
+        uri = parts[0]  # Truncate URI at # symbol
+        remarks = parts[1]
     protocol = uri.split("://")[0]
     uid = uri.split("//")[1].split("@")[0]
     address = uri.split('@')[1].split(":")[0]
@@ -100,6 +106,7 @@ def convert_uri_reality_json(host, port, socksport, uri):
         flow = ""
 
     data = {
+        "remarks": remarks,  # Add extracted remarks here
         "log": {
             "access": "",
             "error": "",
@@ -225,6 +232,12 @@ def convert_uri_reality_json(host, port, socksport, uri):
 
 def convert_uri_vless_ws_json(host, port, socksport, uri):
 
+    # Extract remarks from the URI (if present)
+    remarks = None
+    parts = uri.split("#")
+    if len(parts) > 1:
+        uri = parts[0]  # Truncate URI at # symbol
+        remarks = parts[1]
     protocol = uri.split("://")[0]
     uid = uri.split("//")[1].split("@")[0]
     address = uri.split('@')[1].split(":")[0]
@@ -238,6 +251,7 @@ def convert_uri_vless_ws_json(host, port, socksport, uri):
         path = splitter(uri, "path=")
 
     data = {
+        "remarks": remarks,  # Add extracted remarks here
         "log": {
             "access": "",
             "error": "",
@@ -326,6 +340,12 @@ def convert_uri_vless_ws_json(host, port, socksport, uri):
 
 def convert_uri_vless_tcp_json(host, port, socksport, uri):
 
+    # Extract remarks from the URI (if present)
+    remarks = None
+    parts = uri.split("#")
+    if len(parts) > 1:
+        uri = parts[0]  # Truncate URI at # symbol
+        remarks = parts[1]
     protocol = uri.split("://")[0]
     uid = uri.split("//")[1].split("@")[0]
     address = uri.split('@')[1].split(":")[0]
@@ -333,6 +353,7 @@ def convert_uri_vless_tcp_json(host, port, socksport, uri):
     network = splitter(uri, "type=")
 
     data = {
+        "remarks": remarks,  # Add extracted remarks here
         "log": {
             "access": "",
             "error": "",
@@ -486,6 +507,7 @@ def convert_uri_vmess_ws_json(host, port, socksport, uri):
     address = decoded['add']
     destination_port = int(decoded['port'])
     network = decoded['net']
+    remarks = decoded.get("ps", "")  # Extract remarks from "ps" attribute
 
     headers = {}
     if decoded.get("host", None) is not None:
@@ -497,6 +519,7 @@ def convert_uri_vmess_ws_json(host, port, socksport, uri):
         path = decoded['path']
 
     data = {
+        "remarks": remarks,  # Add extracted remarks here
         "log": {
             "access": "",
             "error": "",
@@ -596,8 +619,10 @@ def convert_uri_vmess_tcp_json(host, port, socksport, uri):
     address = decoded['add']
     destination_port = int(decoded['port'])
     network = decoded['net']
+    remarks = decoded.get("ps", "")  # Extract remarks from "ps" attribute
 
     data = {
+        "remarks": remarks,  # Add extracted remarks here
         "log": {
             "access": "",
             "error": "",
@@ -745,6 +770,12 @@ def convert_uri_vmess_tcp_json(host, port, socksport, uri):
 
 def convert_uri_trojan_reality_json(host, port, socksport, uri):
 
+    # Extract remarks from the URI (if present)
+    remarks = None
+    parts = uri.split("#")
+    if len(parts) > 1:
+        uri = parts[0]  # Truncate URI at # symbol
+        remarks = parts[1]
     protocol = uri.split("://")[0]
     password = uri.split("//")[1].split("@")[0]
     address = uri.split('@')[1].split(":")[0]
@@ -772,6 +803,7 @@ def convert_uri_trojan_reality_json(host, port, socksport, uri):
         flow = ""
 
     data = {
+        "remarks": remarks,  # Add extracted remarks here
         "log": {
             "access": "",
             "error": "",
@@ -997,12 +1029,19 @@ def convert_uri_trojan_ws_json(host, port, socksport, uri):
 
 def convert_uri_trojan_tcp_json(host, port, socksport, uri):
 
+    # Extract remarks from the URI (if present)
+    remarks = None
+    parts = uri.split("#")
+    if len(parts) > 1:
+        uri = parts[0]  # Truncate URI at # symbol
+        remarks = parts[1]
     protocol = uri.split("://")[0]
     password = uri.split("//")[1].split("@")[0]
     address = uri.split('@')[1].split(":")[0]
     destination_port = int(uri.split(address + ':')[1].split("?")[0])
     network = splitter(uri, "type=")
     data = {
+        "remarks": remarks,  # Add extracted remarks here
         "log": {
             "access": "",
             "error": "",
