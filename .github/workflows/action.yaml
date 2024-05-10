@@ -53,6 +53,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit --allow-empty -m "update URIs"
+          git pull
           git push
           
     - name: Run Script
