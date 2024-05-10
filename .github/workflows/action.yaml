@@ -46,7 +46,7 @@ jobs:
       run: |
             git diff --quiet && echo 'No changes' || echo '::set-output name=changed::true'   
     
-    - name: Commit and Push URIs
+    - name: Commit and Push URIs if changed
       if: steps.changesRI.outputs.changed == 'true'
       run: |
           git config --local user.email "action@github.com"
@@ -135,11 +135,17 @@ jobs:
           content=$(cat list.txt | base64 | tr -d '\n')
             echo "$content" > list64
 
+    - name: Check for base64 Changes
+      id: changes64
+      run: |
+            git diff --quiet && echo 'No changes' || echo '::set-output name=changed::true'
+            
     - name: Push Base64
+      if: steps.changes64.outputs.changed == 'true'
       run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Convert to base64"
+          git commit --allow-empty -m "Convert to base64"
           git pull
           git push
