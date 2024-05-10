@@ -58,7 +58,7 @@ function apply() {
                 "settings": {
                     "domainStrategy": "AsIs",
                     "fragment": {
-                        "packets": "1-5",
+                        "packets": "tlshello",
                         "length": "1-5",
                         "interval": "1-5"
                     }
