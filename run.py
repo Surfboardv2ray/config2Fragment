@@ -17,7 +17,8 @@ def get_remarks(uri):
         # Decode base64-encoded vmess URI
         try:
             decoded_uri = base64.b64decode(uri[8:]).decode()
-        except Exception:
+        except Exception as e:
+            print(f"Error decoding vmess URI: {uri}. Error: {str(e)}")
             return None
 
         # Extract remarks from "ps" attribute in decoded JSON
@@ -26,7 +27,8 @@ def get_remarks(uri):
             data = json.loads(decoded_uri)
             remarks = data.get("ps")
             return remarks + '+Fragment' if remarks else None
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as e:
+            print(f"Error parsing decoded vmess URI: {uri}. Error: {str(e)}")
             return None
 
     elif uri.startswith("vless://") or uri.startswith("trojan://"):
@@ -50,7 +52,11 @@ def convert_uri_json_with_remarks(uri):
     """
 
     try:
+        # Print the output of v2tj to see if conversion works initially
+        print(f"Converting URI: {uri}")
         json_data = convert_uri_json(uri)
+        print(f"v2tj output: {json_data}")  # Remove this line after debugging
+
         remarks = get_remarks(uri)
 
         if remarks:
