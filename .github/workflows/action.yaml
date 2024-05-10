@@ -65,6 +65,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "Add generated JSON file"
+          git pull
           git push
 
     - name: Combine JSON files
