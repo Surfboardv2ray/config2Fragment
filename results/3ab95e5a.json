@@ -1,5 +1,5 @@
 {
-    "remarks": "05%2B%F0%9F%8C%A8%F0%9F%87%AC%F0%9F%87%A7%2B%40Surfboardv2ray",
+    "remarks": "162.159.250.122",
     "log": {
         "access": "",
         "error": "",
@@ -8,20 +8,18 @@
     "outbounds": [
         {
             "tag": "proxy",
-            "protocol": "vless",
+            "protocol": "vmess",
             "settings": {
                 "vnext": [
                     {
-                        "address": "crackthecode.ftp.sh",
+                        "address": "162.159.250.122",
                         "port": 443,
                         "users": [
                             {
-                                "id": "43e00e4c-2316-4dc9-8262-cef31886dc56",
+                                "id": "5f726fe3-d82e-4da5-a711-8af0cbb2b682",
                                 "alterId": 0,
                                 "email": "t@t.tt",
-                                "security": "auto",
-                                "encryption": "none",
-                                "flow": ""
+                                "security": "auto"
                             }
                         ]
                     }
@@ -30,19 +28,18 @@
             "streamSettings": {
                 "network": "ws",
                 "wsSettings": {
-                    "path": "",
+                    "path": "/b62a948c-faa2-4e8a-bf8a-3ff3121c875a.asoul-ava.top/azumase.ren",
                     "headers": {
-                        "Host": "vcp3.cushingreflex5.wOrKerS.DEv"
+                        "Host": "vcp3.cushingreflex6.wOrKerS.DEv"
                     }
                 },
                 "security": "tls",
                 "tlsSettings": {
                     "allowInsecure": true,
-                    "serverName": "vcp3.cushingreflex5.wOrKerS.DEv",
-                    "alpn": [
-                        "h2"
-                    ],
-                    "show": false
+                    "serverName": "vcp3.cushingreflex6.wOrKerS.DEv",
+                    "alpn": [],
+                    "show": false,
+                    "fingerprint": "chrome"
                 },
                 "sockopt": {
                     "dialerProxy": "fragment",
