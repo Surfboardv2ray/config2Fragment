@@ -35,7 +35,7 @@ jobs:
         python list.py
         
     - name: Upload URIs
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: uris.txt
         path: uris.txt
