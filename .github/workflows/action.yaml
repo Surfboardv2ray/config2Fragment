@@ -60,7 +60,7 @@ jobs:
       run: python run.py
       
     - name: Upload JSON files
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: JSON files
         path: /configs/*.json
@@ -79,7 +79,7 @@ jobs:
       run: python export.py
  
     - name: Upload Combined JSON file
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Combined JSON file
         path: configs/combined.json
@@ -101,7 +101,7 @@ jobs:
       run: node java/fragment.js
 
     - name: Upload fragment files
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: JSON files
         path: /results/*.json
@@ -118,7 +118,7 @@ jobs:
       run: python fexport.py
  
     - name: Upload Combined fragment file
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Combined fragment file
         path: results/combined.json
